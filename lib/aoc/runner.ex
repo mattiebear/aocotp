@@ -2,10 +2,10 @@ defmodule Aoc.Runner do
   alias Aoc.Util.FileLoader
 
   @runners %{
-    1 => Aoc.Tasks.SortList
+    1 => Aoc.Tasks.SortList,
+    2 => Aoc.Tasks.ReactorReport
   }
 
-  # TODO: Make this work better.
   def run_day(day_number) do
     module = @runners[day_number]
     {task1, task2} = module.runners()
