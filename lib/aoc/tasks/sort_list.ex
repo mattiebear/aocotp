@@ -1,4 +1,6 @@
 defmodule Aoc.Tasks.SortList do
+  @behaviour Aoc.Day
+
   # TODO: Clean up and add docs
   def difference(input) do
     input
@@ -16,6 +18,10 @@ defmodule Aoc.Tasks.SortList do
       n * x
     end)
     |> Enum.sum()
+  end
+
+  def runners do
+    {&difference/1, &similarity/1}
   end
 
   defp to_split_lists(input) do
