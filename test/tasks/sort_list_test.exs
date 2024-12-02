@@ -10,7 +10,11 @@ defmodule Aoc.Tasks.SortListTest do
     3 3
   """
 
-  test "computes to total difference" do
+  test "computes difference" do
     assert Aoc.Tasks.SortList.difference(@test_input) == 11
+  end
+
+  test "computes similarity" do
+    assert Aoc.Tasks.SortList.similarity(@test_input) == 31
   end
 end
