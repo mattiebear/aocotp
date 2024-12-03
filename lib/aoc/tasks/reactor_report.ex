@@ -19,7 +19,7 @@ defmodule Aoc.Tasks.ReactorReport do
   end
 
   @spec dampener_reports(binary()) :: integer()
-  def safe_reports(input) do
+  def dampener_reports(input) do
     input
     |> String.split("\n", trim: true)
     |> Enum.map(&to_int_list/1)
@@ -45,14 +45,16 @@ defmodule Aoc.Tasks.ReactorReport do
     a - b
   end
 
-  defp all_positive_or_negative?(list) do
-    Enum.all?(list, &(&1 >= 0)) or Enum.all?(list, &(&1 <= 0))
+  defp all_positive_or_negative?(line) do
+    Enum.all?(line, &(&1 >= 0)) or Enum.all?(line, &(&1 <= 0))
   end
 
-  defp within_delta_bound?(list) do
-    Enum.all?(list, fn x -> abs(x) >= 1 and abs(x) <= 3 end)
+  defp within_delta_bound?(line) do
+    Enum.all?(line, fn x -> abs(x) >= 1 and abs(x) <= 3 end)
   end
 
-  defp is_damp_safe(lines) do
+  defp is_damp_safe(line) do
+    lines = Enum.map(0..(length(line) - 1), fn n -> List.delete_at(line, n) end)
+    Enum.any?(lines, &is_safe/1)
   end
 end

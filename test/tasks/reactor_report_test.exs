@@ -13,4 +13,8 @@ defmodule Aoc.Tasks.ReactorReportTest do
   test "safe_reports/1 calculates the correct value" do
     assert Aoc.Tasks.ReactorReport.safe_reports(@test_input) == 2
   end
+
+  test "dampener_reports/1 calculates the correct value" do
+    assert Aoc.Tasks.ReactorReport.dampener_reports(@test_input) == 4
+  end
 end
