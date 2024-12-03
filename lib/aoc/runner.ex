@@ -8,15 +8,15 @@ defmodule Aoc.Runner do
     2 => Aoc.Tasks.ReactorReport
   }
 
-  def start_link do
-    GenServer.start_link(__MODULE__, nil, name: via_tuple())
-  end
-
   def child_spec(_args) do
     %{
       id: __MODULE__,
       start: {__MODULE__, :start_link, []}
     }
+  end
+
+  def start_link do
+    GenServer.start_link(__MODULE__, nil, name: via_tuple())
   end
 
   def init(_) do
