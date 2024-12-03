@@ -1,6 +1,5 @@
 defmodule Aoc.Registry do
   def start_link do
-    IO.puts("Registry starting")
     Registry.start_link(keys: :unique, name: __MODULE__)
   end
 
