@@ -1,18 +1,5 @@
 defmodule Aoc do
-  @moduledoc """
-  Documentation for `Aoc`.
-  """
-
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> Aoc.hello()
-      :world
-
-  """
-  def hello do
-    :world
+  def day(day_number) when is_integer(day_number) do
+    Aoc.Runner.run_day(day_number)
   end
 end

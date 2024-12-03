@@ -3,10 +3,9 @@ defmodule Aoc.Application do
 
   @impl true
   def start(_type, _args) do
-    IO.puts("Application starting")
-
     children = [
-      Aoc.Registry
+      Aoc.Registry,
+      Aoc.Runner
     ]
 
     opts = [strategy: :one_for_one, name: Aoc.Supervisor]

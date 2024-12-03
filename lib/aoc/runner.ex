@@ -1,4 +1,6 @@
 defmodule Aoc.Runner do
+  use GenServer
+
   alias Aoc.Util.FileLoader
 
   @runners %{
@@ -6,7 +8,31 @@ defmodule Aoc.Runner do
     2 => Aoc.Tasks.ReactorReport
   }
 
+  def start_link do
+    GenServer.start_link(__MODULE__, nil, name: via_tuple())
+  end
+
+  def child_spec(_args) do
+    %{
+      id: __MODULE__,
+      start: {__MODULE__, :start_link, []}
+    }
+  end
+
+  def init(_) do
+    {:ok, nil}
+  end
+
+  def handle_call({:run, day}, _from, state) do
+    result = run_tasks_for_day(day)
+    {:reply, result, state}
+  end
+
   def run_day(day_number) do
+    GenServer.call(via_tuple(), {:run, day_number})
+  end
+
+  defp run_tasks_for_day(day_number) do
     module = @runners[day_number]
     {task1, task2} = module.runners()
 
@@ -14,7 +40,10 @@ defmodule Aoc.Runner do
     output1 = task1.(data)
     output2 = task2.(data)
 
-    IO.puts("Task 1: #{output1}")
-    IO.puts("Task 2: #{output2}")
+    %Aoc.Result{task1: output1, task2: output2, day: day_number}
+  end
+
+  defp via_tuple do
+    Aoc.Registry.via_tuple(__MODULE__)
   end
 end
