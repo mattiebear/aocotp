@@ -13,7 +13,7 @@ iex -S mix
 And then when in the IEx shell:
 
 ```elixir
-Aoc.day(1)
+Aoc.run_day(1)
 ```
 
-Or any other day you want. It log a `Result` struct to the console, at least until I add some formatting.
+Or any other day you want. It log the results of both of the day's tasks to the console.

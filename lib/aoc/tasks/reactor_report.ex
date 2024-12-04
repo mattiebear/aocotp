@@ -3,7 +3,7 @@ defmodule Aoc.Tasks.ReactorReport do
   Reactor report tasks.
   """
 
-  @behaviour Aoc.Day
+  @behaviour Aoc.Task
 
   def runners do
     {&safe_reports/1, &dampener_reports/1}

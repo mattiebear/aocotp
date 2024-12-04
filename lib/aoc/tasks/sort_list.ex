@@ -1,5 +1,5 @@
 defmodule Aoc.Tasks.SortList do
-  @behaviour Aoc.Day
+  @behaviour Aoc.Task
 
   # TODO: Clean up and add docs
   def difference(input) do

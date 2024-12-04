@@ -5,7 +5,8 @@ defmodule Aoc.Runner do
 
   @runners %{
     1 => Aoc.Tasks.SortList,
-    2 => Aoc.Tasks.ReactorReport
+    2 => Aoc.Tasks.ReactorReport,
+    3 => Aoc.Tasks.Multiplier
   }
 
   def child_spec(_args) do
